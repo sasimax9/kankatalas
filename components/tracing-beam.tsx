@@ -1,8 +1,8 @@
 "use client"
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import type React from "react"
 
-import { motion, useScroll, useSpring } from "motion/react"
+import { motion, useScroll, useSpring, useTransform } from "motion/react"
 import { cn } from "@/lib/utils"
 
 export const TracingBeam = ({
@@ -13,6 +13,8 @@ export const TracingBeam = ({
   className?: string
 }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const [svgHeight, setSvgHeight] = useState(0)
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -23,18 +25,33 @@ export const TracingBeam = ({
     damping: 90,
   })
 
+  const dotY = useTransform(scrollYProgress, [0, 1], [0, svgHeight - 50])
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (ref.current) {
+        setSvgHeight(ref.current.getBoundingClientRect().height)
+      }
+    }
+
+    updateHeight()
+    window.addEventListener("resize", updateHeight)
+    return () => window.removeEventListener("resize", updateHeight)
+  }, [])
+
   return (
     <motion.div ref={ref} className={cn("relative w-full max-w-4xl mx-auto h-full", className)}>
       <div className="absolute -left-4 md:-left-20 top-3">
         <motion.div
+          style={{ y: dotY }}
           transition={{
             duration: 0.2,
             delay: 0.5,
           }}
           animate={{
-            boxShadow: scrollYProgress.get() > 0 ? "none" : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            boxShadow: scrollYProgress.get() > 0 ? "0 0 20px var(--glow-yellow)" : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
-          className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center"
+          className="ml-[27px] h-4 w-4 rounded-full border border-border shadow-sm flex items-center justify-center relative z-10"
         >
           <motion.div
             transition={{
@@ -42,30 +59,25 @@ export const TracingBeam = ({
               delay: 0.5,
             }}
             animate={{
-              backgroundColor: scrollYProgress.get() > 0 ? "white" : "var(--emerald-500, #10b981)",
-              borderColor: scrollYProgress.get() > 0 ? "white" : "var(--emerald-600, #059669)",
+              backgroundColor: scrollYProgress.get() > 0 ? "var(--primary)" : "var(--primary)",
+              borderColor: scrollYProgress.get() > 0 ? "var(--primary)" : "var(--primary)",
+              boxShadow: scrollYProgress.get() > 0 ? "0 0 10px var(--glow-yellow)" : "none",
             }}
-            className="h-2 w-2 rounded-full border border-neutral-300 bg-white"
+            className="h-2 w-2 rounded-full border border-primary bg-primary animate-glow"
           />
         </motion.div>
-        <svg
-          viewBox={`0 0 20 ${ref.current?.getBoundingClientRect()?.height ?? 0}`}
-          width="20"
-          height={ref.current?.getBoundingClientRect()?.height ?? 0}
-          className="ml-4 block"
-          aria-hidden="true"
-        >
+        <svg viewBox={`0 0 20 ${svgHeight}`} width="20" height={svgHeight} className="ml-4 block" aria-hidden="true">
           <motion.path
-            d={`m 1 0 V -36 l 18 24 V ${ref.current?.getBoundingClientRect()?.height ?? 0} l -18 24`}
+            d={`m 1 0 V -36 l 18 24 V ${svgHeight} l -18 24`}
             fill="none"
-            stroke="#9091A0"
-            strokeOpacity="0.16"
+            stroke="var(--border)"
+            strokeOpacity="0.3"
             transition={{
               duration: 10,
             }}
-          ></motion.path>
+          />
           <motion.path
-            d={`m 1 0 V -36 l 18 24 V ${ref.current?.getBoundingClientRect()?.height ?? 0} l -18 24`}
+            d={`m 1 0 V -36 l 18 24 V ${svgHeight} l -18 24`}
             fill="none"
             stroke="url(#gradient)"
             strokeWidth="1.25"
@@ -76,13 +88,13 @@ export const TracingBeam = ({
             style={{
               pathLength,
             }}
-          ></motion.path>
+          />
           <defs>
             <motion.linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1={pathLength} y2="0">
-              <stop stopColor="#18CCFC" stopOpacity="0"></stop>
-              <stop stopColor="#18CCFC"></stop>
-              <stop offset="0.325" stopColor="#6344F5"></stop>
-              <stop offset="1" stopColor="#6344F5" stopOpacity="0"></stop>
+              <stop stopColor="var(--primary)" stopOpacity="0" />
+              <stop stopColor="var(--primary)" />
+              <stop offset="0.325" stopColor="var(--accent)" />
+              <stop offset="1" stopColor="var(--accent)" stopOpacity="0" />
             </motion.linearGradient>
           </defs>
         </svg>

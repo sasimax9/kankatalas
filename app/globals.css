@@ -4,77 +4,86 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated to fey.com inspired minimal dark theme with better contrast */
-  --background: oklch(0.05 0.01 240);
-  --foreground: oklch(0.95 0.01 240);
-  --card: oklch(0.08 0.01 240);
-  --card-foreground: oklch(0.92 0.01 240);
-  --popover: oklch(0.08 0.01 240);
-  --popover-foreground: oklch(0.92 0.01 240);
-  --primary: oklch(0.7 0.1 240);
-  --primary-foreground: oklch(0.98 0.01 240);
-  --secondary: oklch(0.12 0.01 240);
-  --secondary-foreground: oklch(0.8 0.01 240);
-  --muted: oklch(0.1 0.01 240);
-  --muted-foreground: oklch(0.6 0.01 240);
-  --accent: oklch(0.15 0.01 240);
-  --accent-foreground: oklch(0.9 0.01 240);
+  /* Updated to yellow-only theme */
+  --background: oklch(0.98 0.02 85);
+  --foreground: oklch(0.15 0.05 85);
+  --card: oklch(0.96 0.02 85);
+  --card-foreground: oklch(0.2 0.05 85);
+  --popover: oklch(0.96 0.02 85);
+  --popover-foreground: oklch(0.2 0.05 85);
+  --primary: oklch(0.7 0.15 85); /* Yellow primary */
+  --primary-foreground: oklch(0.15 0.05 85);
+  --secondary: oklch(0.92 0.02 85);
+  --secondary-foreground: oklch(0.3 0.05 85);
+  --muted: oklch(0.94 0.02 85);
+  --muted-foreground: oklch(0.5 0.05 85);
+  --accent: oklch(0.75 0.12 85); /* Yellow accent */
+  --accent-foreground: oklch(0.15 0.05 85);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.01 240);
-  --border: oklch(0.15 0.01 240);
-  --input: oklch(0.12 0.01 240);
-  --ring: oklch(0.7 0.1 240);
-  --chart-1: oklch(0.7 0.1 240);
-  --chart-2: oklch(0.75 0.08 180);
-  --chart-3: oklch(0.65 0.12 300);
-  --chart-4: oklch(0.8 0.06 120);
-  --chart-5: oklch(0.85 0.04 60);
+  --destructive-foreground: oklch(0.98 0.02 85);
+  --border: oklch(0.88 0.02 85);
+  --input: oklch(0.92 0.02 85);
+  --ring: oklch(0.7 0.15 85);
+  --chart-1: oklch(0.7 0.15 85);
+  --chart-2: oklch(0.75 0.12 85);
+  --chart-3: oklch(0.65 0.18 85);
+  --chart-4: oklch(0.8 0.1 85);
+  --chart-5: oklch(0.6 0.2 85);
   --radius: 0.5rem;
-  --sidebar: oklch(0.08 0.01 240);
-  --sidebar-foreground: oklch(0.92 0.01 240);
-  --sidebar-primary: oklch(0.7 0.1 240);
-  --sidebar-primary-foreground: oklch(0.98 0.01 240);
-  --sidebar-accent: oklch(0.12 0.01 240);
-  --sidebar-accent-foreground: oklch(0.8 0.01 240);
-  --sidebar-border: oklch(0.15 0.01 240);
-  --sidebar-ring: oklch(0.7 0.1 240);
+  --sidebar: oklch(0.96 0.02 85);
+  --sidebar-foreground: oklch(0.2 0.05 85);
+  --sidebar-primary: oklch(0.7 0.15 85);
+  --sidebar-primary-foreground: oklch(0.15 0.05 85);
+  --sidebar-accent: oklch(0.92 0.02 85);
+  --sidebar-accent-foreground: oklch(0.3 0.05 85);
+  --sidebar-border: oklch(0.88 0.02 85);
+  --sidebar-ring: oklch(0.7 0.15 85);
   --scroll: 0;
+
+  /* Updated beam effects to yellow */
+  --beam-yellow: oklch(0.7 0.15 85 / 0.3);
+  --glow-yellow: oklch(0.7 0.15 85 / 0.1);
 }
 
 .dark {
-  --background: oklch(0.05 0.01 240);
-  --foreground: oklch(0.95 0.01 240);
-  --card: oklch(0.08 0.01 240);
-  --card-foreground: oklch(0.92 0.01 240);
-  --popover: oklch(0.08 0.01 240);
-  --popover-foreground: oklch(0.92 0.01 240);
-  --primary: oklch(0.7 0.1 240);
-  --primary-foreground: oklch(0.98 0.01 240);
-  --secondary: oklch(0.12 0.01 240);
-  --secondary-foreground: oklch(0.8 0.01 240);
-  --muted: oklch(0.1 0.01 240);
-  --muted-foreground: oklch(0.6 0.01 240);
-  --accent: oklch(0.15 0.01 240);
-  --accent-foreground: oklch(0.9 0.01 240);
+  /* Updated dark mode to use darker yellow-based colors for contrast */
+  --background: oklch(0.08 0.02 85);
+  --foreground: oklch(0.92 0.02 85);
+  --card: oklch(0.12 0.02 85);
+  --card-foreground: oklch(0.88 0.02 85);
+  --popover: oklch(0.12 0.02 85);
+  --popover-foreground: oklch(0.88 0.02 85);
+  --primary: oklch(0.75 0.18 85); /* Brighter yellow for dark mode */
+  --primary-foreground: oklch(0.08 0.02 85);
+  --secondary: oklch(0.15 0.02 85);
+  --secondary-foreground: oklch(0.85 0.02 85);
+  --muted: oklch(0.18 0.02 85);
+  --muted-foreground: oklch(0.65 0.05 85);
+  --accent: oklch(0.8 0.15 85); /* Bright yellow accent for dark mode */
+  --accent-foreground: oklch(0.08 0.02 85);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.01 240);
-  --border: oklch(0.15 0.01 240);
-  --input: oklch(0.12 0.01 240);
-  --ring: oklch(0.7 0.1 240);
-  --chart-1: oklch(0.7 0.1 240);
-  --chart-2: oklch(0.75 0.08 180);
-  --chart-3: oklch(0.65 0.12 300);
-  --chart-4: oklch(0.8 0.06 120);
-  --chart-5: oklch(0.85 0.04 60);
-  --sidebar: oklch(0.08 0.01 240);
-  --sidebar-foreground: oklch(0.92 0.01 240);
-  --sidebar-primary: oklch(0.7 0.1 240);
-  --sidebar-primary-foreground: oklch(0.98 0.01 240);
-  --sidebar-accent: oklch(0.12 0.01 240);
-  --sidebar-accent-foreground: oklch(0.8 0.01 240);
-  --sidebar-border: oklch(0.15 0.01 240);
-  --sidebar-ring: oklch(0.7 0.1 240);
+  --destructive-foreground: oklch(0.98 0.02 85);
+  --border: oklch(0.25 0.02 85);
+  --input: oklch(0.18 0.02 85);
+  --ring: oklch(0.75 0.18 85);
+  --chart-1: oklch(0.75 0.18 85);
+  --chart-2: oklch(0.8 0.15 85);
+  --chart-3: oklch(0.7 0.2 85);
+  --chart-4: oklch(0.85 0.12 85);
+  --chart-5: oklch(0.65 0.22 85);
+  --sidebar: oklch(0.12 0.02 85);
+  --sidebar-foreground: oklch(0.88 0.02 85);
+  --sidebar-primary: oklch(0.75 0.18 85);
+  --sidebar-primary-foreground: oklch(0.08 0.02 85);
+  --sidebar-accent: oklch(0.15 0.02 85);
+  --sidebar-accent-foreground: oklch(0.85 0.02 85);
+  --sidebar-border: oklch(0.25 0.02 85);
+  --sidebar-ring: oklch(0.75 0.18 85);
   --scroll: 0;
+
+  /* Updated beam effects for dark mode */
+  --beam-yellow: oklch(0.75 0.18 85 / 0.4);
+  --glow-yellow: oklch(0.75 0.18 85 / 0.15);
 }
 
 @theme inline {
@@ -203,43 +212,167 @@
     }
   }
 
-  /* Minimal glass effect like fey.com */
+  /* Updated beam animations for yellow */
+  .animate-beam {
+    animation: beam-sweep 3s ease-in-out infinite;
+  }
+
+  @keyframes beam-sweep {
+    0%,
+    100% {
+      transform: translateX(-100%) rotate(-45deg);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(100vw) rotate(-45deg);
+      opacity: 1;
+    }
+  }
+
+  .animate-glow {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow-pulse {
+    from {
+      box-shadow: 0 0 20px var(--glow-yellow), 0 0 40px var(--glow-yellow), 0 0 60px var(--glow-yellow);
+    }
+    to {
+      box-shadow: 0 0 30px var(--glow-yellow), 0 0 60px var(--glow-yellow), 0 0 90px var(--glow-yellow);
+    }
+  }
+
+  .animate-light-trail {
+    animation: light-trail 4s linear infinite;
+  }
+
+  @keyframes light-trail {
+    0% {
+      transform: translateX(-200px) translateY(-200px);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(calc(100vw + 200px)) translateY(200px);
+      opacity: 0;
+    }
+  }
+
+  /* Enhanced glass effect with yellow beams */
   .glass-minimal {
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Subtle hover effects */
+  .glass-minimal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--beam-yellow), transparent);
+    transition: left 0.5s ease-in-out;
+  }
+
+  .glass-minimal:hover::before {
+    left: 100%;
+  }
+
+  /* Updated beam backgrounds for yellow */
+  .beam-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .beam-bg::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, var(--beam-yellow), transparent);
+    animation: rotate-beam 10s linear infinite;
+    opacity: 0.1;
+    z-index: -1;
+  }
+
+  @keyframes rotate-beam {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Enhanced hover effects with yellow glow */
   .hover-lift {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
   }
 
   .hover-lift:hover {
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px var(--glow-yellow), 0 0 50px var(--glow-yellow);
   }
 
-  /* Clean button styles */
+  /* Updated button styles with yellow theme */
   .btn-minimal {
     @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-300;
-    @apply bg-foreground text-background hover:bg-foreground/90;
+    background: var(--primary);
+    color: var(--primary-foreground);
     font-size: 0.875rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-minimal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.3s ease;
+  }
+
+  .btn-minimal:hover::before {
+    left: 100%;
   }
 
   .btn-outline-minimal {
     @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-300;
-    @apply border border-border hover:border-foreground/20 hover:bg-foreground/5;
+    border: 1px solid var(--border);
+    background: transparent;
     font-size: 0.875rem;
+    position: relative;
   }
 
-  /* Improved tracing beam for better visibility */
+  .btn-outline-minimal:hover {
+    border-color: var(--primary);
+    background: var(--glow-yellow);
+    box-shadow: 0 0 20px var(--glow-yellow);
+  }
+
+  /* Enhanced tracing beam with yellow colors */
   .tracing-beam-line {
     background: linear-gradient(
       180deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.1) 20%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.1) 80%,
+      var(--beam-yellow) 20%,
+      var(--primary) 50%,
+      var(--beam-yellow) 80%,
       transparent 100%
     );
   }
@@ -260,18 +393,18 @@
   }
 
   .parallax-slow {
-    transform: translateY(calc(var(--scroll-y, 0) * 0.4px));
-    transition: transform 0.1s ease-out;
+    transform: translateY(calc(var(--scroll-y, 0) * 0.5px));
+    transition: transform 0.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .parallax-medium {
-    transform: translateY(calc(var(--scroll-y, 0) * 0.2px));
-    transition: transform 0.1s ease-out;
+    transform: translateY(calc(var(--scroll-y, 0) * 0.3px));
+    transition: transform 0.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .parallax-fast {
-    transform: translateY(calc(var(--scroll-y, 0) * 0.05px));
-    transition: transform 0.1s ease-out;
+    transform: translateY(calc(var(--scroll-y, 0) * 0.1px));
+    transition: transform 0.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   /* MacBook-style smooth animations */
@@ -283,10 +416,60 @@
   .macbook-hover {
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
+    position: relative;
   }
 
   .macbook-hover:hover {
     transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 30px var(--glow-yellow), 0 0 60px var(--glow-yellow);
+  }
+
+  /* Updated floating light particles for yellow */
+  .light-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .light-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: float-particle 6s linear infinite;
+  }
+
+  @keyframes float-particle {
+    0% {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) translateX(100px);
+      opacity: 0;
+    }
+  }
+
+  .light-particle:nth-child(2n) {
+    background: var(--accent);
+    animation-delay: -2s;
+    animation-duration: 8s;
+  }
+
+  .light-particle:nth-child(3n) {
+    animation-delay: -4s;
+    animation-duration: 7s;
   }
 }
 

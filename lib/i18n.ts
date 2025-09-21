@@ -73,7 +73,7 @@ export const translations = {
       },
     },
     about: {
-      title: "About kankatalas",
+      title: "About Kankatalas",
       description:
         "We are a team of passionate developers, designers, and AI specialists dedicated to building the next generation of intelligent software solutions.",
     },
@@ -152,7 +152,7 @@ export const translations = {
       },
     },
     about: {
-      title: "Acerca de kankatalas",
+      title: "Acerca de Kankatalas",
       description:
         "Somos un equipo de desarrolladores, diseñadores y especialistas en IA apasionados, dedicados a construir la próxima generación de soluciones de software inteligentes.",
     },

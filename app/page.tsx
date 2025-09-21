@@ -1,20 +1,49 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FloatingNav } from "@/components/floating-navbar"
 import { TracingBeam } from "@/components/tracing-beam"
 import { FooterNavigation } from "@/components/footer-navigation"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { ThemeSwitcher } from "@/components/theme-switcher"
+import { LightEffects } from "@/components/light-effects"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Brain, Code, Database, Layers, Zap, Users, Sparkles, CheckCircle } from "lucide-react"
+import {
+  ArrowRight,
+  Brain,
+  Code,
+  Database,
+  Layers,
+  Zap,
+  Users,
+  Sparkles,
+  CheckCircle,
+  Star,
+  Quote,
+  TrendingUp,
+  Shield,
+  Clock,
+  Award,
+} from "lucide-react"
 import { motion } from "motion/react"
 import { translations, type Language } from "@/lib/i18n"
 
 export default function HomePage() {
   const [currentLanguage, setCurrentLanguage] = useState<Language>("en")
+  const [scrollY, setScrollY] = useState(0)
   const t = translations[currentLanguage]
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+      document.documentElement.style.setProperty("--scroll-y", window.scrollY.toString())
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { name: t.nav.services, link: "#services" },
@@ -24,7 +53,11 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative beam-bg">
+      <LightEffects />
+
+      <ThemeSwitcher />
+
       {/* Language Switcher */}
       <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher currentLanguage={currentLanguage} onLanguageChange={setCurrentLanguage} />
@@ -43,7 +76,7 @@ export default function HomePage() {
         >
           <Badge
             variant="secondary"
-            className="mb-4 bg-foreground/5 text-foreground/70 border-foreground/10 hover:bg-foreground/10 text-xs px-3 py-1"
+            className="mb-4 bg-foreground/5 text-foreground/70 border-foreground/10 hover:bg-foreground/10 text-xs px-3 py-1 animate-glow"
           >
             <Sparkles className="w-3 h-3 mr-1.5" />
             {t.hero.badge}
@@ -70,6 +103,75 @@ export default function HomePage() {
       </section>
 
       <TracingBeam className="px-6">
+        <section className="py-16 md:py-20 bg-foreground/[0.02]">
+          <div className="max-w-6xl mx-auto container-padding">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-medium mb-3 tracking-tight">
+                Why Choose kankatalas?
+              </h2>
+              <p className="text-base text-foreground/60 max-w-xl mx-auto">
+                We deliver cutting-edge solutions with proven results and exceptional support.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: TrendingUp,
+                  title: "Proven Results",
+                  description: "98% client satisfaction rate with measurable business impact",
+                  metric: "98%",
+                },
+                {
+                  icon: Shield,
+                  title: "Enterprise Security",
+                  description: "Bank-level security protocols and compliance standards",
+                  metric: "100%",
+                },
+                {
+                  icon: Clock,
+                  title: "Fast Delivery",
+                  description: "Average project completion 40% faster than industry standard",
+                  metric: "40%",
+                },
+                {
+                  icon: Award,
+                  title: "Expert Team",
+                  description: "Certified professionals with 5+ years average experience",
+                  metric: "5+",
+                },
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Card className="group macbook-hover glass-minimal border-foreground/5 text-center h-full">
+                    <CardHeader className="pb-2">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <feature.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <div className="text-2xl font-bold text-primary mb-1">{feature.metric}</div>
+                      <CardTitle className="text-base">{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-foreground/60 leading-relaxed text-sm">
+                        {feature.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="services" className="py-16 md:py-20">
           <div className="max-w-6xl mx-auto container-padding">
             <motion.div
@@ -90,6 +192,7 @@ export default function HomePage() {
                   description: t.services.aiMl.description,
                   badges: ["TensorFlow", "PyTorch", "OpenAI"],
                   image: "/ai-neural-network-visualization-with-glowing-nodes.jpg",
+                  details: "Custom AI models, machine learning pipelines, and intelligent automation solutions.",
                 },
                 {
                   icon: Layers,
@@ -97,6 +200,7 @@ export default function HomePage() {
                   description: t.services.uiUx.description,
                   badges: ["React", "Next.js", "Tailwind CSS"],
                   image: "/modern-ui-design-mockup-with-clean-interface.jpg",
+                  details: "Responsive web applications, mobile-first design, and seamless user experiences.",
                 },
                 {
                   icon: Database,
@@ -104,6 +208,7 @@ export default function HomePage() {
                   description: t.services.dataEng.description,
                   badges: ["Apache Spark", "PostgreSQL", "MongoDB"],
                   image: "/data-pipeline-visualization-with-flowing-connectio.jpg",
+                  details: "Scalable data pipelines, real-time analytics, and cloud infrastructure.",
                 },
                 {
                   icon: Zap,
@@ -111,6 +216,7 @@ export default function HomePage() {
                   description: t.services.llm.description,
                   badges: ["GPT-4", "Claude", "Llama"],
                   image: "/language-model-conversation-interface-with-chat-bu.jpg",
+                  details: "Custom chatbots, content generation, and intelligent document processing.",
                 },
                 {
                   icon: Code,
@@ -118,6 +224,7 @@ export default function HomePage() {
                   description: t.services.python.description,
                   badges: ["Django", "FastAPI", "Flask"],
                   image: "/python-code-editor-with-syntax-highlighting.jpg",
+                  details: "Backend APIs, microservices architecture, and automated testing frameworks.",
                 },
                 {
                   icon: Users,
@@ -125,6 +232,7 @@ export default function HomePage() {
                   description: t.services.consulting.description,
                   badges: ["Architecture", "DevOps", "Cloud"],
                   image: "/business-strategy-diagram-with-connected-elements.jpg",
+                  details: "Technical strategy, system architecture, and digital transformation guidance.",
                 },
               ].map((service, index) => (
                 <motion.div
@@ -152,6 +260,7 @@ export default function HomePage() {
                       <CardDescription className="text-foreground/60 leading-relaxed text-sm">
                         {service.description}
                       </CardDescription>
+                      <p className="text-xs text-foreground/50 mt-2">{service.details}</p>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-1">
@@ -173,7 +282,86 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="expertise" className="py-20 md:py-24 bg-foreground/[0.02]">
+        <section className="py-16 md:py-20 bg-foreground/[0.02]">
+          <div className="max-w-6xl mx-auto container-padding">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-medium mb-3 tracking-tight">What Our Clients Say</h2>
+              <p className="text-base text-foreground/60 max-w-xl mx-auto">
+                Real feedback from companies we've helped transform.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Sarah Chen",
+                  role: "CTO, TechFlow Inc",
+                  content:
+                    "kankatalas delivered our AI-powered analytics platform ahead of schedule. The quality exceeded our expectations.",
+                  rating: 5,
+                },
+                {
+                  name: "Marcus Rodriguez",
+                  role: "Founder, DataVision",
+                  content:
+                    "Their expertise in machine learning helped us increase our prediction accuracy by 40%. Exceptional team.",
+                  rating: 5,
+                },
+                {
+                  name: "Emily Watson",
+                  role: "Product Manager, InnovateLab",
+                  content:
+                    "The user interface they designed is intuitive and beautiful. Our user engagement increased by 60%.",
+                  rating: 5,
+                },
+              ].map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Card className="glass-minimal border-foreground/5 h-full">
+                    <CardHeader>
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                        ))}
+                      </div>
+                      <Quote className="w-6 h-6 text-primary/50 mb-2" />
+                      <CardDescription className="text-foreground/70 leading-relaxed">
+                        "{testimonial.content}"
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                          <span className="text-sm font-medium text-primary">
+                            {testimonial.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-medium text-sm">{testimonial.name}</div>
+                          <div className="text-xs text-foreground/60">{testimonial.role}</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="expertise" className="py-20 md:py-24">
           <div className="max-w-6xl mx-auto container-padding">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <motion.div

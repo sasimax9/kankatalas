@@ -22,20 +22,44 @@ export const FloatingNav = ({
   const [visible, setVisible] = useState(true)
   const [isOpen, setIsOpen] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up")
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY)
+
+      if (scrollDifference < 5) return // Ignore small scroll movements
+
+      const direction = currentScrollY > lastScrollY ? "down" : "up"
+      setScrollDirection(direction)
+
+      // Show navbar when scrolling up or at the top
+      if (direction === "up" || currentScrollY < 100) {
         setVisible(true)
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setVisible(false)
       }
+      // Hide navbar when scrolling down and past threshold
+      else if (direction === "down" && currentScrollY > 100) {
+        setVisible(false)
+        setIsOpen(false) // Close mobile menu when hiding
+      }
+
       setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    let ticking = false
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", throttledHandleScroll)
   }, [lastScrollY])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
@@ -71,7 +95,7 @@ export const FloatingNav = ({
           <div className="w-7 h-7 bg-foreground rounded-lg flex items-center justify-center">
             <Code className="w-4 h-4 text-background" />
           </div>
-          <span className="text-base font-medium text-foreground">TechForge</span>
+          <span className="text-base font-medium text-foreground">kankatalas</span>
         </div>
 
         {/* Desktop Navigation */}
