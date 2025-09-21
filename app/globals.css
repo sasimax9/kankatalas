@@ -1,0 +1,312 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to fey.com inspired minimal dark theme with better contrast */
+  --background: oklch(0.05 0.01 240);
+  --foreground: oklch(0.95 0.01 240);
+  --card: oklch(0.08 0.01 240);
+  --card-foreground: oklch(0.92 0.01 240);
+  --popover: oklch(0.08 0.01 240);
+  --popover-foreground: oklch(0.92 0.01 240);
+  --primary: oklch(0.7 0.1 240);
+  --primary-foreground: oklch(0.98 0.01 240);
+  --secondary: oklch(0.12 0.01 240);
+  --secondary-foreground: oklch(0.8 0.01 240);
+  --muted: oklch(0.1 0.01 240);
+  --muted-foreground: oklch(0.6 0.01 240);
+  --accent: oklch(0.15 0.01 240);
+  --accent-foreground: oklch(0.9 0.01 240);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0.01 240);
+  --border: oklch(0.15 0.01 240);
+  --input: oklch(0.12 0.01 240);
+  --ring: oklch(0.7 0.1 240);
+  --chart-1: oklch(0.7 0.1 240);
+  --chart-2: oklch(0.75 0.08 180);
+  --chart-3: oklch(0.65 0.12 300);
+  --chart-4: oklch(0.8 0.06 120);
+  --chart-5: oklch(0.85 0.04 60);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.08 0.01 240);
+  --sidebar-foreground: oklch(0.92 0.01 240);
+  --sidebar-primary: oklch(0.7 0.1 240);
+  --sidebar-primary-foreground: oklch(0.98 0.01 240);
+  --sidebar-accent: oklch(0.12 0.01 240);
+  --sidebar-accent-foreground: oklch(0.8 0.01 240);
+  --sidebar-border: oklch(0.15 0.01 240);
+  --sidebar-ring: oklch(0.7 0.1 240);
+  --scroll: 0;
+}
+
+.dark {
+  --background: oklch(0.05 0.01 240);
+  --foreground: oklch(0.95 0.01 240);
+  --card: oklch(0.08 0.01 240);
+  --card-foreground: oklch(0.92 0.01 240);
+  --popover: oklch(0.08 0.01 240);
+  --popover-foreground: oklch(0.92 0.01 240);
+  --primary: oklch(0.7 0.1 240);
+  --primary-foreground: oklch(0.98 0.01 240);
+  --secondary: oklch(0.12 0.01 240);
+  --secondary-foreground: oklch(0.8 0.01 240);
+  --muted: oklch(0.1 0.01 240);
+  --muted-foreground: oklch(0.6 0.01 240);
+  --accent: oklch(0.15 0.01 240);
+  --accent-foreground: oklch(0.9 0.01 240);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0.01 240);
+  --border: oklch(0.15 0.01 240);
+  --input: oklch(0.12 0.01 240);
+  --ring: oklch(0.7 0.1 240);
+  --chart-1: oklch(0.7 0.1 240);
+  --chart-2: oklch(0.75 0.08 180);
+  --chart-3: oklch(0.65 0.12 300);
+  --chart-4: oklch(0.8 0.06 120);
+  --chart-5: oklch(0.85 0.04 60);
+  --sidebar: oklch(0.08 0.01 240);
+  --sidebar-foreground: oklch(0.92 0.01 240);
+  --sidebar-primary: oklch(0.7 0.1 240);
+  --sidebar-primary-foreground: oklch(0.98 0.01 240);
+  --sidebar-accent: oklch(0.12 0.01 240);
+  --sidebar-accent-foreground: oklch(0.8 0.01 240);
+  --sidebar-border: oklch(0.15 0.01 240);
+  --sidebar-ring: oklch(0.7 0.1 240);
+  --scroll: 0;
+}
+
+@theme inline {
+  /* Updated font to Alan Sans */
+  --font-sans: var(--font-alan-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Enhanced font smoothing and optimized line height */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+  }
+
+  /* Optimized typography hierarchy with smaller, more refined sizes */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium tracking-tight;
+    line-height: 1.1;
+  }
+
+  h1 {
+    @apply text-2xl md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl;
+  }
+
+  p {
+    @apply leading-relaxed text-sm md:text-base;
+  }
+
+  /* Improved small text readability */
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+@layer utilities {
+  /* Simplified animations for cleaner fey.com aesthetic */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out forwards;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Minimal glass effect like fey.com */
+  .glass-minimal {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Subtle hover effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Clean button styles */
+  .btn-minimal {
+    @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-300;
+    @apply bg-foreground text-background hover:bg-foreground/90;
+    font-size: 0.875rem;
+  }
+
+  .btn-outline-minimal {
+    @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-300;
+    @apply border border-border hover:border-foreground/20 hover:bg-foreground/5;
+    font-size: 0.875rem;
+  }
+
+  /* Improved tracing beam for better visibility */
+  .tracing-beam-line {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.1) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Clean section spacing */
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  .container-padding {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+
+  /* MacBook-style scrolling effects */
+  .macbook-scroll {
+    transform: translateY(var(--scroll-offset, 0));
+    transition: transform 0.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .parallax-slow {
+    transform: translateY(calc(var(--scroll-y, 0) * 0.4px));
+    transition: transform 0.1s ease-out;
+  }
+
+  .parallax-medium {
+    transform: translateY(calc(var(--scroll-y, 0) * 0.2px));
+    transition: transform 0.1s ease-out;
+  }
+
+  .parallax-fast {
+    transform: translateY(calc(var(--scroll-y, 0) * 0.05px));
+    transition: transform 0.1s ease-out;
+  }
+
+  /* MacBook-style smooth animations */
+  .smooth-transform {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .macbook-hover {
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .macbook-hover:hover {
+    transform: translateY(-6px) scale(1.015);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+/* MacBook-style momentum scrolling with better performance */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Added scroll-driven animations */
+@supports (animation-timeline: scroll()) {
+  .parallax-slow,
+  .parallax-medium,
+  .parallax-fast {
+    animation-timeline: scroll();
+    animation-range: 0% 100%;
+  }
+}
