@@ -34,7 +34,7 @@ export const FooterNavigation = () => {
                 <Code className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
-                TechForge
+                Kankatalas
               </span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -112,9 +112,9 @@ export const FooterNavigation = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Get in Touch</h3>
             <ul className="space-y-3 mb-6">
-              <li className="text-muted-foreground">hello@techforge.dev</li>
-              <li className="text-muted-foreground">+1 (555) 123-4567</li>
-              <li className="text-muted-foreground">San Francisco, CA</li>
+              <li className="text-muted-foreground">info@kankatalas.org</li>
+              <li className="text-muted-foreground">+91 (889) 739-0906</li>
+              <li className="text-muted-foreground">Hyderabad, Telangana</li>
             </ul>
             <Button
               onClick={scrollToTop}
@@ -131,7 +131,7 @@ export const FooterNavigation = () => {
         {/* Bottom Section */}
         <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center">
           <div className="text-muted-foreground text-sm mb-4 md:mb-0">
-            © 2024 TechForge. All rights reserved. Building the future with intelligent software.
+            © 2024 Kankatalas. All rights reserved. Building the future with intelligent software.
           </div>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

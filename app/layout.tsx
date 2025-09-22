@@ -1,11 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Exo } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 
-const alanSans = Inter({
+const alanSans = Exo({
   subsets: ["latin"],
   variable: "--font-alan-sans",
   display: "swap",
